@@ -6,8 +6,8 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     ports:
-      - "5353:53/tcp" #dns
-      - "5353:53/udp" #dns
+      - "53:53/tcp" #dns
+      - "53:53/udp" #dns
       - "8085:80/tcp" #web
     environment:
       TZ: 'Europe/Paris'
