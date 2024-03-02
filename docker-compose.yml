@@ -7,9 +7,9 @@ services:
     image: pihole/pihole:latest
     network_mode: "host"
     environment:
-      - TZ: 'Europe/Paris'
-      - WEBPASSWORD: 'YourPassword'
-      - DNSMASQ_USER: root
+      TZ: 'Europe/Paris'
+      WEBPASSWORD: 'YourPassword'
+      DNSMASQ_USER: root
     # Volumes store your data between container upgrades
     volumes:
       - './etc-pihole:/etc/pihole'
