@@ -5,15 +5,15 @@ services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
-    network_mode: "host"
+    ports:
+      - "53:53/tcp" #dns
+      - "53:53/udp" #dns
+      - "8085:80/tcp" #web
     environment:
       TZ: 'Europe/Paris'
       WEBPASSWORD: 'YourPassword'
-      DNSMASQ_USER: root
     # Volumes store your data between container upgrades
     volumes:
       - './etc-pihole:/etc/pihole'
       - './etc-dnsmasq.d:/etc/dnsmasq.d'
-      cap_add:
-        - NET_ADMIN
     restart: unless-stopped
