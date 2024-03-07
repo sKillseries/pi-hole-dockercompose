@@ -5,10 +5,7 @@ services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
-    ports:
-      - "53:53/tcp" #dns
-      - "53:53/udp" #dns
-      - "8085:80/tcp" #web
+    network_mode: "host"
     environment:
       TZ: 'Europe/Paris'
       WEBPASSWORD: 'YourPassword'
@@ -16,4 +13,6 @@ services:
     volumes:
       - './etc-pihole:/etc/pihole'
       - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN
     restart: unless-stopped
